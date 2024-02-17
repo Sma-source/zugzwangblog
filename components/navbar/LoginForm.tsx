@@ -19,7 +19,11 @@ const LoginForm = () => {
     });
   };
   return (
-    <Button className="flex items-center gap-2" variant="outline">
+    <Button
+      className="flex items-center gap-2"
+      variant="outline"
+      onClick={handleLogin}
+    >
       Login
     </Button>
   );
