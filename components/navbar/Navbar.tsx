@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import LoginForm from "./LoginForm";
 
 const Navbar = () => {
   return (
@@ -7,6 +8,7 @@ const Navbar = () => {
       <Link className="font-bold text-2xl" href="/">
         Zugzwang Blog
       </Link>
+      <LoginForm />
     </nav>
   );
 };
