@@ -2,8 +2,10 @@
 import { createBrowserClient } from "@supabase/ssr";
 import React from "react";
 import { Button } from "../ui/button";
+import { usePathname } from "next/navigation";
 
 const LoginForm = () => {
+  const pathname = usePathname();
   const supabase = createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -12,7 +14,7 @@ const LoginForm = () => {
     supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: location.origin + "/auth/callback",
+        redirectTo: `${location.origin}/auth/callback?next=${pathname}`,
       },
     });
   };
