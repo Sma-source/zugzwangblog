@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import LoginForm from "./LoginForm";
 import { useUser } from "@/lib/store/user";
+import Profile from "./Profile";
 
 const Navbar = () => {
   const user = useUser((state) => state.user);
@@ -11,7 +12,7 @@ const Navbar = () => {
       <Link className="font-bold text-2xl" href="/">
         Zugzwang Blog
       </Link>
-      {user ? <h1>profile</h1> : <LoginForm />}
+      {user ? <Profile /> : <LoginForm />}
     </nav>
   );
 };
