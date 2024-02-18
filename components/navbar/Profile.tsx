@@ -10,6 +10,7 @@ const Profile = () => {
       alt="profile img"
       width={50}
       height={50}
+      className="rounded-full ring-2 ring-violet-500"
     />
   );
 };
