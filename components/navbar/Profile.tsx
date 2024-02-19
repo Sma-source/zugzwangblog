@@ -22,6 +22,8 @@ const Profile = () => {
     await supabase.auth.signOut();
     setUser(undefined);
   };
+
+  const isAdmin = user?.user_metadata?.role === "admin";
   return (
     <Popover>
       <PopoverTrigger>
@@ -38,14 +40,16 @@ const Profile = () => {
           <p className="text-sm">{user?.user_metadata.user_name}</p>
           <p className="text-sm text-gray-600">{user?.user_metadata.email}</p>
         </div>
-        <Link href="/dashboard">
-          <Button
-            variant="ghost"
-            className="w-full flex justify-between items-center"
-          >
-            Dashboard
-          </Button>
-        </Link>
+        {isAdmin && (
+          <Link href="/dashboard">
+            <Button
+              variant="ghost"
+              className="w-full flex justify-between items-center"
+            >
+              Dashboard
+            </Button>
+          </Link>
+        )}
 
         <Button
           variant="ghost"
