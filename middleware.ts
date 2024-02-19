@@ -54,8 +54,16 @@ export async function middleware(request: NextRequest) {
     }
   );
 
-  const { data } = await supabase.auth.getUser();
-  console.log(data);
+  const { data } = await supabase.auth.getSession();
+  // console.log(data);
+
+  if (data.session) {
+    if (data.session.user.user_metadata.role !== "admin") {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+  } else {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
   return response;
 }
 
