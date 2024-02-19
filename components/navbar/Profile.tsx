@@ -8,9 +8,20 @@ import {
 } from "@/components/ui/popover";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { createBrowserClient } from "@supabase/ssr";
 
 const Profile = () => {
   const user = useUser((state) => state.user);
+  const setUser = useUser((state) => state.setUser);
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setUser(undefined);
+  };
   return (
     <Popover>
       <PopoverTrigger>
@@ -39,6 +50,7 @@ const Profile = () => {
         <Button
           variant="ghost"
           className="w-full flex justify-between items-center"
+          onClick={handleLogout}
         >
           Log out
         </Button>
