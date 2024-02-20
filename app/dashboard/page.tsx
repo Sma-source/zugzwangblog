@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { PlusIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import React from "react";
+import BlogTable from "./blog/components/BlogTable";
 
 const Dashboard = () => {
   return (
@@ -14,6 +15,7 @@ const Dashboard = () => {
           </Button>
         </Link>
       </div>
+      <BlogTable />
     </div>
   );
 };
