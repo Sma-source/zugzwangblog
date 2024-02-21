@@ -99,7 +99,10 @@ const CreateForm = () => {
                     <div className="flex items-center gap-1 border p-2 rounded-md bg-zinc-100">
                       <StarIcon />
                       <span className="text-sm">Premium</span>
-                      <Switch />
+                      <Switch
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
                     </div>
                   </FormControl>
                 </FormItem>
@@ -114,7 +117,10 @@ const CreateForm = () => {
                     <div className="flex items-center gap-1 border p-2 rounded-md bg-zinc-100">
                       <RocketIcon />
                       <span className="text-sm">Publish</span>
-                      <Switch />
+                      <Switch
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
                     </div>
                   </FormControl>
                 </FormItem>
@@ -128,16 +134,22 @@ const CreateForm = () => {
         </div>
         <FormField
           control={form.control}
-          name="is_premium"
+          name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <>
+                  <div className="w-full flex break-words p-2 gap-2">
+                    <Input
+                      className="border-none text-lg font-medium leading-relaxed focus:ring-1 ring-violet-500"
+                      placeholder="Post Title"
+                      autoFocus
+                      {...field}
+                    />
+                  </div>
+                </>
               </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
+
               <FormMessage />
             </FormItem>
           )}
