@@ -43,6 +43,7 @@ const CreateForm = () => {
   const [isPreview, setPreview] = useState(false);
 
   const form = useForm<z.infer<typeof FormSchema>>({
+    mode: "all",
     resolver: zodResolver(FormSchema),
     defaultValues: {
       title: "",
