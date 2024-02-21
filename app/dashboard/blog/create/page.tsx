@@ -9,10 +9,8 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -25,6 +23,7 @@ import {
   StarIcon,
 } from "@radix-ui/react-icons";
 import { Switch } from "@/components/ui/switch";
+import { cn } from "@/lib/utils";
 
 const FormSchema = z.object({
   title: z.string().min(10, {
@@ -139,13 +138,33 @@ const CreateForm = () => {
             <FormItem>
               <FormControl>
                 <>
-                  <div className="w-full flex break-words p-2 gap-2">
+                  <div
+                    className={cn(
+                      "w-full flex break-words p-2 gap-2",
+                      isPreview ? "divide-x-0" : "divide-x"
+                    )}
+                  >
                     <Input
-                      className="border-none text-lg font-medium leading-relaxed focus:ring-1 ring-violet-500"
+                      className={cn(
+                        "border-none text-lg font-medium leading-relaxed focus:ring-1 ring-violet-500",
+                        isPreview ? "w-0 p-0" : "w-full lg:w-1/2"
+                      )}
                       placeholder="Post Title"
                       autoFocus
                       {...field}
                     />
+                    <div
+                      className={cn(
+                        "lg:px-10",
+                        isPreview
+                          ? "mx-auto w-full lg:w-4/5 "
+                          : " w-1/2 lg:block hidden "
+                      )}
+                    >
+                      <h1 className="text-3xl font-bold dark:text-gray-200">
+                        {form.getValues().title || "Untittle Post"}
+                      </h1>
+                    </div>
                   </div>
                 </>
               </FormControl>
