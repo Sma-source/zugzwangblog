@@ -170,7 +170,8 @@ const CreateForm = () => {
                 </>
               </FormControl>
 
-              <FormMessage />
+              {form.getFieldState("title").invalid && //only show error message when user is typing
+                form.getValues().title && <FormMessage />}
             </FormItem>
           )}
         />
