@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -127,7 +128,10 @@ const CreateForm = () => {
               )}
             />
           </div>
-          <Button className="flex items-center gap-1">
+          <Button
+            className="flex items-center gap-1"
+            disabled={!form.formState.isValid}
+          >
             <DownloadIcon />
             Save
           </Button>
@@ -172,6 +176,65 @@ const CreateForm = () => {
 
               {form.getFieldState("title").invalid && //only show error message when user is typing
                 form.getValues().title && <FormMessage />}
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="image_url"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <>
+                  <div
+                    className={cn(
+                      "w-full flex break-words p-2 gap-2",
+                      isPreview ? "divide-x-0" : "divide-x"
+                    )}
+                  >
+                    <Input
+                      className={cn(
+                        "border-none text-lg font-medium leading-relaxed focus:ring-1 ring-violet-500",
+                        isPreview ? "w-0 p-0" : "w-full lg:w-1/2"
+                      )}
+                      placeholder="Image url"
+                      autoFocus
+                      {...field}
+                    />
+                    <div
+                      className={cn(
+                        "lg:px-10",
+                        isPreview
+                          ? "mx-auto w-full lg:w-4/5 "
+                          : " w-1/2 lg:block hidden "
+                      )}
+                    >
+                      {isPreview ? (
+                        <div className="w-full h-80 relative mt-10 border rounded-md">
+                          <Image
+                            src={form.getValues().image_url}
+                            alt="preview"
+                            fill
+                            className=" object-cover object-center rounded-md"
+                          />
+                        </div>
+                      ) : (
+                        <p className="text-gray-600">
+                          👆 click on preview to see image
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </>
+              </FormControl>
+
+              {form.getFieldState("image_url").invalid && //only show error message when user is typing
+                form.getValues().image_url && (
+                  <div className="p-2">
+                    <FormMessage />
+                  </div>
+                )}
             </FormItem>
           )}
         />
