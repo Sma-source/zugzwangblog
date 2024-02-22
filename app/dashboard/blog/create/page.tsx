@@ -25,6 +25,7 @@ import {
 } from "@radix-ui/react-icons";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
+import { Textarea } from "@/components/ui/textarea";
 
 const FormSchema = z.object({
   title: z.string().min(10, {
@@ -211,7 +212,7 @@ const CreateForm = () => {
                       )}
                     >
                       {isPreview ? (
-                        <div className="w-full h-80 relative mt-10 border rounded-md">
+                        <div className="w-full h-[30rem] relative mt-10 border rounded-md">
                           <Image
                             src={form.getValues().image_url}
                             alt="preview"
@@ -235,6 +236,45 @@ const CreateForm = () => {
                     <FormMessage />
                   </div>
                 )}
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="content"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <div
+                  className={cn(
+                    "w-full flex p-2 gap-2 ",
+                    !isPreview ? "divide-x h-70vh" : "divide-x-0"
+                  )}
+                >
+                  <Textarea
+                    placeholder="Blog content"
+                    {...field}
+                    className={cn(
+                      "border-none text-lg font-medium leading-relaxed focus:ring-1 ring-violet-500  h-70vh resize-none",
+                      isPreview ? "w-0 p-0" : "w-full lg:w-1/2"
+                    )}
+                  />
+                  <div
+                    className={cn(
+                      "overflow-scroll h-full",
+                      isPreview
+                        ? "mx-auto w-full lg:w-4/5 "
+                        : "w-1/2 lg:block hidden"
+                    )}
+                  >
+                    <h1>{form.getValues().content}</h1>
+                  </div>
+                </div>
+              </FormControl>
+
+              {form.getFieldState("content").invalid &&
+                form.getValues().content && <FormMessage />}
             </FormItem>
           )}
         />
