@@ -26,6 +26,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
+import MarkdownPreview from "@/components/markdown/MarkdownPreview";
 
 const FormSchema = z.object({
   title: z.string().min(10, {
@@ -268,7 +269,10 @@ const CreateForm = () => {
                         : "w-1/2 lg:block hidden"
                     )}
                   >
-                    <h1>{form.getValues().content}</h1>
+                    <MarkdownPreview
+                      content={form.getValues().content}
+                      className="lg:px-10"
+                    />
                   </div>
                 </div>
               </FormControl>
