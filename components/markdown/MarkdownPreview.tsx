@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
 import React from "react";
+import CopyButton from "./CopyButton";
 import Markdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import { CodeIcon } from "@radix-ui/react-icons";
 import "highlight.js/styles/atom-one-dark.min.css";
-import CopyButton from "./CopyButton";
 
 const MarkdownPreview = ({
   content,
@@ -53,7 +53,7 @@ const MarkdownPreview = ({
                   </div>
                   <CopyButton id={id} />
                 </div>
-                <div className="overflow-x-auto w-full">
+                <div className="overflow-x-auto w-full" id={id}>
                   <div className="p-5">{children}</div>
                 </div>
               </div>
