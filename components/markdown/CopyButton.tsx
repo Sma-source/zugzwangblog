@@ -13,8 +13,10 @@ const CopyButton = ({ id }: { id: string }) => {
     }
   };
   return (
-    <div className="hover:scale-105 relative hover:bg-zinc-700 p-2 rounded-md cursor-pointer">
-      <CopyIcon />
+    <div className="hover:scale-105 relative hover:bg-zinc-900 p-2 rounded-md cursor-pointer">
+      <div className="h-full w-full absolute top-0 left-0 flex items-center justify-center">
+        <CopyIcon />
+      </div>
     </div>
   );
 };
