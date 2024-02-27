@@ -3,8 +3,9 @@ import React from "react";
 import CopyButton from "./CopyButton";
 import Markdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
-import { CodeIcon } from "@radix-ui/react-icons";
+import { PiTerminalThin } from "react-icons/pi";
 import "highlight.js/styles/atom-one-dark.min.css";
+import { icons } from "@/lib/icons";
 
 const MarkdownPreview = ({
   content,
@@ -39,8 +40,11 @@ const MarkdownPreview = ({
           const match = /language-(\w+)/.exec(className || "");
           const id = (Math.floor(Math.random() * 100) + 1).toString();
           if (match?.length) {
-            let Icon = CodeIcon;
-
+            let Icon = PiTerminalThin;
+            const isMatch = icons.hasOwnProperty(match[1]);
+            if (isMatch) {
+              Icon = icons[match[1] as keyof typeof icons];
+            }
             return (
               <div className=" bg-black text-gray-300 border-[0.5px] rounded-md border-zinc-500">
                 <div className="flex items-center justify-between px-5 py-2 border-b-[0.5px] border-zinc-500">
