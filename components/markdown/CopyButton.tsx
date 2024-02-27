@@ -13,7 +13,7 @@ const CopyButton = ({ id }: { id: string }) => {
     }
   };
   return (
-    <div>
+    <div className="hover:scale-105 relative hover:bg-zinc-700 p-2 rounded-md cursor-pointer">
       <CopyIcon />
     </div>
   );
