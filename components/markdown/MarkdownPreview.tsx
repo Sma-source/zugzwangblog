@@ -45,7 +45,7 @@ const MarkdownPreview = ({
                 <div className="flex items-center justify-between px-5 py-2 border-b-[0.5px] border-zinc-500">
                   <div className="flex items-center gap-2">
                     <Icon />
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-gray-300">
                       {/* @ts-ignore  */}
                       {node?.data?.meta}
                     </p>
