@@ -37,7 +37,7 @@ const MarkdownPreview = ({
         },
         code: ({ node, className, children, ...props }) => {
           const match = /language-(\w+)/.exec(className || "");
-
+          const id = (Math.floor(Math.random() * 100) + 1).toString();
           if (match?.length) {
             let Icon = CodeIcon;
 
@@ -51,7 +51,7 @@ const MarkdownPreview = ({
                       {node?.data?.meta}
                     </p>
                   </div>
-                  <CopyButton />
+                  <CopyButton id={id} />
                 </div>
                 <div className="overflow-x-auto w-full">
                   <div className="p-5">{children}</div>
