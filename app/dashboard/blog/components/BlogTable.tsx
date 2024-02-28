@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { EyeOpenIcon, Pencil1Icon } from "@radix-ui/react-icons";
+import { EyeOpenIcon, Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import { Switch } from "@/components/ui/switch";
 import React from "react";
 import { readBlog } from "@/lib/actions/blog";
@@ -35,6 +35,10 @@ const Actions = () => {
       <Button className="flex gap-2 items-center" variant="outline">
         <EyeOpenIcon />
         View
+      </Button>
+      <Button className="flex gap-2 items-center" variant="outline">
+        <TrashIcon />
+        Delete
       </Button>
       <Button className="flex gap-2 items-center" variant="outline">
         <Pencil1Icon />
