@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import Image from "next/image";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -35,6 +35,7 @@ const BlogForm = ({
   onHandleSubmit: (data: BlogFormSchemaType) => void;
 }) => {
   const [isPreview, setPreview] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   const form = useForm<z.infer<typeof BlogFormSchema>>({
     mode: "all",
@@ -48,14 +49,8 @@ const BlogForm = ({
     },
   });
   function onSubmit(data: z.infer<typeof BlogFormSchema>) {
-    onHandleSubmit(data);
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+    startTransition(() => {
+      onHandleSubmit(data);
     });
   }
   return (
@@ -128,10 +123,13 @@ const BlogForm = ({
           </div>
           <Button
             type="submit"
-            className="flex items-center gap-1"
+            className={cn(
+              "flex gap-2 items-center border px-3 py-2 rounded-md border-violet-500 disabled:border-gray-800  bg-violet-600 transition-all group text-sm disabled:bg-gray-900",
+              { "animate-spin": isPending }
+            )}
             disabled={!form.formState.isValid}
           >
-            <DownloadIcon />
+            <DownloadIcon className=" animate-bounce group-disabled:animate-none" />
             Save
           </Button>
         </div>
