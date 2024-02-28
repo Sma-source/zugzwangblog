@@ -56,3 +56,11 @@ export const createBlog = async (data: BlogFormSchemaType) => {
     return JSON.stringify(result);
   }
 };
+
+export const readBlog = async () => {
+  return supabase
+    .from("blog")
+    .select("*")
+    .eq("is_published", true)
+    .order("created_at", { ascending: false });
+};
