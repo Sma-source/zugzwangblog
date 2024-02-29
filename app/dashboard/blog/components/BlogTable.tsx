@@ -3,6 +3,7 @@ import { EyeOpenIcon, Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import { Switch } from "@/components/ui/switch";
 import React from "react";
 import { readBlog } from "@/lib/actions/blog";
+import DeleteAlert from "./DeleteAlert";
 
 const BlogTable = async () => {
   const { data: blogs } = await readBlog();
@@ -20,7 +21,7 @@ const BlogTable = async () => {
               <h1 className="col-span-2">{blog.title} </h1>
               <Switch checked={blog.is_premium} />
               <Switch checked={blog.is_published} />
-              <Actions />
+              <Actions blogId={blog.id} />
             </div>
           );
         })}
@@ -29,17 +30,14 @@ const BlogTable = async () => {
   );
 };
 
-const Actions = () => {
+const Actions = ({ blogId }: { blogId: string }) => {
   return (
     <div className="flex items-center gap-2 md:flex-wrap">
       <Button className="flex gap-2 items-center" variant="outline">
         <EyeOpenIcon />
         View
       </Button>
-      <Button className="flex gap-2 items-center" variant="outline">
-        <TrashIcon />
-        Delete
-      </Button>
+      <DeleteAlert blogId={blogId} />
       <Button className="flex gap-2 items-center" variant="outline">
         <Pencil1Icon />
         Edit
