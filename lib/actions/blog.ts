@@ -64,3 +64,9 @@ export const readBlog = async () => {
     .eq("is_published", true)
     .order("created_at", { ascending: false });
 };
+
+export const deleteBlogById = async (blogId: string) => {
+  const result = await supabase.from("blog").delete().eq("id", blogId);
+
+  return JSON.stringify(result);
+};
