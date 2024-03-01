@@ -22,7 +22,7 @@ const SessionProvider = () => {
     // eslint-disable-next-line
   }, []);
 
-  return <div>session-provider</div>;
+  return <></>;
 };
 
 export default SessionProvider;
