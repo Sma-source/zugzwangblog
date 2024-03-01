@@ -101,3 +101,22 @@ export const updateBlogById = async (
   revalidatePath(DASHBOARD);
   return JSON.stringify(result);
 };
+
+export const updateBlogDetail = async (
+  blogId: string,
+  data: BlogFormSchemaType
+) => {
+  const { ["content"]: excludedKey, ...blog } = data;
+  const supabase = await createSupabaseServerClient();
+  const resultBlog = await supabase.from("blog").update(blog).eq("id", blogId);
+  if (resultBlog.error) {
+    return JSON.stringify(resultBlog);
+  } else {
+    const result = await supabase
+      .from("blog_content")
+      .update({ content: data.content })
+      .eq("blog_id", blogId);
+    revalidatePath(DASHBOARD);
+    return JSON.stringify(result);
+  }
+};
