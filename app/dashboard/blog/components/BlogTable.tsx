@@ -10,9 +10,9 @@ import Link from "next/link";
 const BlogTable = async () => {
   const { data: blogs } = await readBlogAdmin();
   return (
-    <div className="rounded-md dark:bg-graident-dark border-[0.5px] overflow-y-scroll">
-      <div className="w-[800px] md:w-full">
-        <div className="grid grid-cols-5 border-b p-5 dark:text-gray-500 text-zinc-500">
+    <div className="rounded-md dark:bg-graident-dark border-[0.5px]  overflow-y-scroll">
+      <div className="sm:w-[900px] md:w-full">
+        <div className="grid grid-cols-5 border-b p-5 dark:text-gray-500 text-zinc-500 text-sm md:text-base">
           <h2 className=" col-span-2">Title</h2>
           <h1>Premium</h1>
           <h1>Publish</h1>
@@ -49,10 +49,12 @@ const BlogTable = async () => {
 const Actions = ({ blogId }: { blogId: string }) => {
   return (
     <div className="flex items-center gap-2 md:flex-wrap">
-      <Button className="flex gap-2 items-center" variant="outline">
-        <EyeOpenIcon />
-        View
-      </Button>
+      <Link href={`/blog/${blogId}`}>
+        <Button className="flex gap-2 items-center" variant="outline">
+          <EyeOpenIcon />
+          View
+        </Button>
+      </Link>
       <DeleteAlert blogId={blogId} />
       <Link href={`/dashboard/blog/edit/${blogId}`}>
         <Button className="flex gap-2 items-center" variant="outline">
