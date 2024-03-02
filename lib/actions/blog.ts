@@ -99,6 +99,7 @@ export const updateBlogById = async (
   const supabase = await createSupabaseServerClient();
   const result = await supabase.from("blog").update(data).eq("id", blogId);
   revalidatePath(DASHBOARD);
+  revalidatePath(`/blog/${blogId}`);
   return JSON.stringify(result);
 };
 
@@ -117,6 +118,7 @@ export const updateBlogDetail = async (
       .update({ content: data.content })
       .eq("blog_id", blogId);
     revalidatePath(DASHBOARD);
+    revalidatePath("/blog/" + blogId);
     return JSON.stringify(result);
   }
 };
