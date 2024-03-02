@@ -1,3 +1,13 @@
+export type IBlog = {
+  id: string;
+  title: string;
+  image_url: string;
+  created_at: string;
+  is_premium: boolean;
+  content: string;
+  is_published: boolean;
+};
+
 export type IBlogDetail = {
   created_at: string;
   id: string;
