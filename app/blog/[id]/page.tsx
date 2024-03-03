@@ -2,6 +2,9 @@ import React from "react";
 import Image from "next/image";
 import { IBlog } from "@/lib/types";
 import BlogContent from "../[id]/components/BlogContent";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
 const page = async ({ params }: { params: { id: string } }) => {
   const { data: blog } = (await fetch(
@@ -16,6 +19,16 @@ const page = async ({ params }: { params: { id: string } }) => {
   return (
     <div className="max-w-5xl mx-auto min-h-screen  pt-10 space-y-10">
       <div className="sm:px-10 space-y-5">
+        <Link className="float-right" href="/">
+          {" "}
+          <Button
+            variant="link"
+            className="bg-[#262A33] text-xs text-white gap-1"
+          >
+            <ArrowLeftIcon />
+            Retour au Blog
+          </Button>
+        </Link>
         <h1 className=" text-3xl font-bold dark:text-gray-200">
           {blog?.title}
         </h1>
