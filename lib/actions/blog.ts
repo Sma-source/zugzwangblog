@@ -89,6 +89,7 @@ export const deleteBlogById = async (blogId: string) => {
   const supabase = await createSupabaseServerClient();
   const result = await supabase.from("blog").delete().eq("id", blogId);
   revalidatePath(DASHBOARD);
+  revalidatePath(`/blog/${blogId}`);
   return JSON.stringify(result);
 };
 
