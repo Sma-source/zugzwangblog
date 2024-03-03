@@ -10,9 +10,9 @@ import Link from "next/link";
 const BlogTable = async () => {
   const { data: blogs } = await readBlogAdmin();
   return (
-    <div className="rounded-md dark:bg-graident-dark border-[0.5px]  overflow-y-scroll">
+    <div className="rounded-md dark:bg-graident-dark bg-white border-[0.5px]  overflow-y-scroll">
       <div className="sm:w-[900px] md:w-full">
-        <div className="grid grid-cols-5 border-b p-5 dark:text-gray-500 text-zinc-500 text-sm md:text-base">
+        <div className="grid grid-cols-5 border-b p-5 dark:text-gray-500 text-zinc-700 text-sm md:text-base">
           <h2 className=" col-span-2">Title</h2>
           <h1>Premium</h1>
           <h1>Publish</h1>
