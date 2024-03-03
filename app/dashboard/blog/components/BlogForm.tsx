@@ -15,7 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
+
 import {
   DownloadIcon,
   EyeOpenIcon,
@@ -44,11 +44,11 @@ const BlogForm = ({
     mode: "all",
     resolver: zodResolver(BlogFormSchema),
     defaultValues: {
-      title: blog?.title,
-      content: blog?.blog_content?.content,
-      image_url: blog?.image_url,
-      is_premium: blog?.is_premium,
-      is_published: blog?.is_published,
+      title: blog?.title || "",
+      content: blog?.blog_content?.content || "",
+      image_url: blog?.image_url || "",
+      is_premium: blog?.is_premium || false,
+      is_published: blog?.is_published || true,
     },
   });
   function onSubmit(data: z.infer<typeof BlogFormSchema>) {
@@ -126,6 +126,7 @@ const BlogForm = ({
           </div>
           <Button
             type="submit"
+            role="button"
             className={cn(
               "flex gap-2 items-center border px-3 py-2 rounded-md border-violet-500 disabled:border-gray-800  bg-violet-600 transition-all group text-sm disabled:bg-gray-900",
               { "animate-spin": isPending }
