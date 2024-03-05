@@ -128,7 +128,7 @@ const BlogForm = ({
             type="submit"
             role="button"
             className={cn(
-              "flex gap-2 items-center border px-3 py-2 rounded-md border-violet-500 disabled:border-gray-800  bg-violet-600 transition-all group text-sm disabled:bg-gray-900",
+              "flex gap-2 items-center border px-3 py-2 rounded-md border-primary bg-primary disabled:border-gray-800 transition-all group text-sm disabled:bg-gray-900",
               { "animate-spin": isPending }
             )}
             disabled={!form.formState.isValid}
