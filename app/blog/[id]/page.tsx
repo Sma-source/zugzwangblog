@@ -6,6 +6,38 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
+export const generateStaticParams = async () => {
+  const { data: blog } = await fetch(
+    process.env.SITE_URL + "/api/blog?id=" + "*"
+  ).then((res) => res.json());
+  return blog;
+};
+
+export const generateMetaData = async ({
+  params,
+}: {
+  params: { id: string };
+}) => {
+  const { data: blog } = (await fetch(
+    process.env.SITE_URL + "/api/blog?id=" + params.id
+  ).then((res) => res.json())) as { data: IBlog };
+
+  return {
+    title: blog?.title,
+    authors: {
+      name: "Michael Chang",
+    },
+    openGraph: {
+      title: blog?.title,
+      url: "http://localhost:3000/blog" + params.id,
+      siteName: "ZugZwang",
+      images: blog?.image_url,
+      type: "article",
+    },
+    keywords: ["géo politique", "stratégie", "blog politique"],
+  };
+};
+
 const page = async ({ params }: { params: { id: string } }) => {
   const { data: blog } = (await fetch(
     process.env.SITE_URL + "/api/blog?id=" + params.id
