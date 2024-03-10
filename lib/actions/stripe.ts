@@ -14,3 +14,12 @@ export const checkout = async (email: string, redirectTo: string) => {
     })
   );
 };
+
+export const manageBilling = async (customer_id: string) => {
+  return JSON.stringify(
+    await stripe.billingPortal.sessions.create({
+      customer: customer_id,
+      return_url: process.env.SITE_URL,
+    })
+  );
+};
