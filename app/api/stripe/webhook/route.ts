@@ -36,6 +36,11 @@ export async function POST(req: any) {
         }
         break;
 
+      case "customer.subscription.deleted":
+        const deletSub = event.data.object;
+        await onCancel(deletSub.status === "active", deletSub.id);
+        break;
+
       default:
         console.log(`Unhandled event type ${event.type}`);
     }
@@ -44,6 +49,18 @@ export async function POST(req: any) {
     return Response.json({ error: `Webhook Error}` });
   }
 }
+
+const onCancel = async (subscription_status: boolean, sub_id: string) => {
+  const supabaseAdmin = await createSupabaseAdmin();
+  await supabaseAdmin
+    .from("users")
+    .update({
+      subscription_status,
+      stripe_subscription_id: null,
+      stripe_customer_id: null,
+    })
+    .eq("stripe_subscription_id", sub_id);
+};
 
 const onSucces = async (
   subscription_status: boolean,
