@@ -14,7 +14,7 @@ export default async function Home() {
         return (
           <Link
             href={"/blog/" + blog.id}
-            className="w-full  border rounded-md bg-[#F2DFCE] dark:bg-graident-dark p-5 hover:ring-2 ring-[#F2DFCE] transition-all cursor-pointer space-y-5 first:lg:col-span-2 first:md:col-span-3"
+            className="w-full  border rounded-xl  dark:bg-graident-dark p-5 hover:ring-2 ring-[#990f3d] transition-all cursor-pointer space-y-5 first:lg:col-span-2 first:md:col-span-3"
             key={index}
           >
             <div className="w-full h-72 sm:w-full  md:h-64 xl:h-96  relative">
@@ -23,7 +23,7 @@ export default async function Home() {
                 src={blog.image_url}
                 alt="cover"
                 fill
-                className=" rounded-md object-cover object-center"
+                className="rounded-xl object-cover object-center"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
@@ -34,7 +34,7 @@ export default async function Home() {
                 }).format(when)}
               </p>
 
-              <h1 className="text-xl font-bold dark:text-gray-300">
+              <h1 className="text-2xl font-semibold dark:text-gray-300 hover:text-[#615b58] hover:underline">
                 {blog.title}
               </h1>
             </div>
