@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { IBlog } from "@/lib/types";
 import BlogContent from "../[id]/components/BlogContent";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import PageViews from "@/components/PageView";
 
 export const generateStaticParams = async () => {
   const { data: blog } = await fetch(
@@ -48,6 +49,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   }
 
   const when = new Date(blog?.created_at);
+
   return (
     <div className="max-w-5xl mx-auto min-h-screen  pt-10 space-y-10">
       <div className="sm:px-10 space-y-5">

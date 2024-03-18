@@ -48,9 +48,9 @@ const BlogTable = async () => {
 
 const Actions = ({ blogId }: { blogId: string }) => {
   return (
-    <div className="flex items-center gap-2 md:flex-wrap">
+    <div className="flex items-center gap-2 md:flex-wrap ">
       <Link href={`/blog/${blogId}`}>
-        <Button className="flex gap-2 items-center" variant="outline">
+        <Button className="flex gap-2  items-center" variant="outline">
           <EyeOpenIcon />
           View
         </Button>
