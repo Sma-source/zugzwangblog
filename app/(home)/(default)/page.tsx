@@ -14,10 +14,10 @@ export default async function Home() {
         return (
           <Link
             href={"/blog/" + blog.id}
-            className="w-full  border-0 rounded-xl  dark:bg-graident-dark p-5 hover:ring-2 ring-[#990f3d] transition-all cursor-pointer space-y-5 first:lg:col-span-2 first:md:col-span-3"
+            className="w-full  border-0 rounded-xl  dark:bg-graident-dark p-5 hover:ring-0 transition-all cursor-pointer space-y-5 first:lg:col-span-2 first:md:col-span-3"
             key={index}
           >
-            <div className="w-full h-72 sm:w-full  md:h-64 xl:h-96  relative">
+            <div className="w-full h-72 sm:w-full  md:h-64 xl:h-96  relative hover:opacity-80 transition-all">
               <Image
                 priority
                 src={blog.image_url}
