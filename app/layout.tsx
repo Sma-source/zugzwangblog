@@ -11,17 +11,17 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
   title: {
-    template: "%s | ZugZwang",
-    default: "ZugZwang",
+    template: "%s | TechnoGatsby",
+    default: "TechnoGatsby",
   },
   description:
     " Plongez dans les sujets brûlants qui façonnent le paysage géopolitique actuel, des relations internationales aux conflits régionaux, en passant par les enjeux économiques mondiaux.",
   openGraph: {
-    title: "ZugZwang",
+    title: "TechnoGatsby",
     description:
       " Plongez dans les sujets brûlants qui façonnent le paysage géopolitique actuel, des relations internationales aux conflits régionaux, en passant par les enjeux économiques mondiaux.",
     url: "http://localhost:3000",
-    siteName: "ZugZwang",
+    siteName: "TechnoGatsby",
     type: "website",
   },
 
