@@ -62,6 +62,7 @@ const BlogTable = async () => {
               const updatePublish = updateBlogById.bind(null, blog.id, {
                 is_published: !blog.is_published,
               } as BlogFormSchemaType);
+              const when = new Date(blog.created_at);
               return (
                 <TableRow key={index}>
                   <TableCell className="font-medium">{blog.title}</TableCell>
@@ -80,7 +81,9 @@ const BlogTable = async () => {
                     />
                   </TableCell>
                   <TableCell className="hidden md:table-cell">
-                    {blog.created_at}
+                    {new Intl.DateTimeFormat("fr-FR", {
+                      dateStyle: "short",
+                    }).format(when)}
                   </TableCell>
                   <Actions blogId={blog.id} />
                 </TableRow>
