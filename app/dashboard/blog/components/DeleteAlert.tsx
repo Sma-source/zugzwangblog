@@ -43,38 +43,30 @@ const DeleteAlert = ({ blogId }: { blogId: string }) => {
     });
   };
   return (
-    <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button className="flex gap-2 items-center" variant="outline">
-          <TrashIcon />
-          Delete
-        </Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>
-            <form onSubmit={onSubmit}>
-              <Button className="flex gap-2 items-center">
-                <AiOutlineLoading3Quarters
-                  className={cn(" animate-spin ", {
-                    hidden: !isPending,
-                  })}
-                />{" "}
-                Continue
-              </Button>
-            </form>
-          </AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+        <AlertDialogDescription>
+          This action cannot be undone. This will permanently delete your
+          account and remove your data from our servers.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogAction>
+          <form onSubmit={onSubmit}>
+            <Button className="flex gap-2 items-center">
+              <AiOutlineLoading3Quarters
+                className={cn(" animate-spin ", {
+                  hidden: !isPending,
+                })}
+              />{" "}
+              Continue
+            </Button>
+          </form>
+        </AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
   );
 };
 
