@@ -1,4 +1,4 @@
-import { Activity, CreditCard, Users, Eye, ArrowUpRight } from "lucide-react";
+import { Activity, CreditCard, Users, Eye } from "lucide-react";
 
 import {
   Card,
@@ -7,8 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import {
   Table,
   TableBody,
@@ -17,7 +15,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
 
 const Analytics = () => {
   return (
