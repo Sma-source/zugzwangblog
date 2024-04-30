@@ -10,7 +10,7 @@ const Dashboard = () => {
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Blogs</h1>
         <Link href="/dashboard/blog/create">
-          <Button variant="outline" className="flex items-center">
+          <Button className="flex items-center bg-purple-500 hover:bg-purple-400">
             Create <PlusIcon />
           </Button>
         </Link>
