@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { PersonIcon, ReaderIcon } from "@radix-ui/react-icons";
+import { PersonIcon, ReaderIcon, BarChartIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -17,6 +17,11 @@ const NavLinks = () => {
       href: "/dashboard/user",
       Icon: PersonIcon,
       text: "users",
+    },
+    {
+      href: "/dashboard/analytics",
+      Icon: BarChartIcon,
+      text: "analytics",
     },
   ];
   return (
