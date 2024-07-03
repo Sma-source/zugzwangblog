@@ -67,7 +67,7 @@ const BlogForm = ({
             <span
               role="button"
               tabIndex={0}
-              className="flex gap-2 items-center border px-3 py-2 rounded-md hover:border-zinc-500 transition-all bg-zinc-100 text-sm"
+              className="flex gap-2 items-center border px-3 py-2 rounded-md hover:border-zinc-500 transition-all bg-zinc-100 dark:bg-slate-950 text-sm"
               onClick={() =>
                 setPreview(
                   !isPreview && !form.getFieldState("image_url").invalid
@@ -93,7 +93,7 @@ const BlogForm = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <div className="flex items-center gap-1 border p-2 rounded-md bg-zinc-100">
+                    <div className="flex items-center gap-1 border p-2 rounded-md bg-zinc-100 dark:bg-slate-950">
                       <StarIcon />
                       <span className="text-sm">Premium</span>
                       <Switch
@@ -111,7 +111,7 @@ const BlogForm = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <div className="flex items-center gap-1 border p-2 rounded-md bg-zinc-100">
+                    <div className="flex items-center gap-1 border p-2 rounded-md bg-zinc-100 dark:bg-slate-950">
                       <RocketIcon />
                       <span className="text-sm">Publish</span>
                       <Switch
@@ -128,7 +128,7 @@ const BlogForm = ({
             type="submit"
             role="button"
             className={cn(
-              "flex gap-2 items-center border px-3 py-2 rounded-md border-primary bg-primary disabled:border-gray-800 transition-all group text-sm disabled:bg-gray-900",
+              "flex gap-2 items-center border px-3 py-2 rounded-md border-primary bg-primary  disabled:border-gray-800 transition-all group text-sm disabled:bg-gray-900 dark:disabled:text-white",
               { "animate-spin": isPending }
             )}
             disabled={!form.formState.isValid}
